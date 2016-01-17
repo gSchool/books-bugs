@@ -6,8 +6,19 @@ npm install
 nodemon
 ```
 
-## Description
+## How to Submit
 
+Afer all 3 branches have working CRUD that uses RESTful routes and knex migrations, __submit a PR__ to this repo.
+
+## Description
+Welcome to __Books Bugs__!
+
+This app contains 3 branches, `bug-1`, `bug-2`, `bug-3`. Your mission is to `git checkout` each branch, one at a time, and fix the bugs so that each branch has the app working with full CRUD. As you fix each bug, `git add, commit` your work
+(use concise, clear commit messages that communicate what you fixed).
+
+The stories below can be used as a guideline for how a user should be able to move through the app.
+
+__The app should use RESTful routes and knex migrations to set up your schema.__
 
 ## Stories
 

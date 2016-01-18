@@ -7,10 +7,10 @@ block content
     form(action='/books/#{book.id}', method='post')
       div.form-group
         label(for="author") Author
-        input.form-control(type="text" id="author" name='author' value= book.author placeholder="Author")
+        input.form-control(type="text" id="author" name='author' value=book.author placeholder="Author")
       div.form-group
         label(for="title") Title
-        input.form-control(type="text" id="title" name='title' value= book.title placeholder="Title")
+        input.form-control(type="text" id="title" name='title' value=book.title placeholder="Title")
       div.form-group
           label Rate this book
           p

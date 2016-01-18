@@ -4,18 +4,24 @@ var knex = require('../db/knex');
 function Books() {
   return knex('books');
 }
+
 // main page get request, display all books
 router.get('/', function(req, res, next) {
   Books().select().then(function (books) {
     res.render('books/index', {books: books});
   })
 });
+
 // add new book from add form
 router.post('/', function (req, res, next) {
   Books().insert(req.body).then(function (results) {
     res.redirect('/books');
   })
 })
+// new book form
+router.get('/new', function(req, res, next) {
+  res.render('books/new');
+});
 // display individual book
 router.get('/:id', function(req, res, next) {
   Books().where('id', req.params.id).first().then(function (book) {
@@ -23,9 +29,7 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
-router.get('/new', function(req, res, next) {
-  res.render('books/new');
-});
+
 
 router.get('/:id/edit', function(req, res, next) {
   Books().where('id', req.params.id).first().then(function (book) {

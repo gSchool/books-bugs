@@ -10,4 +10,4 @@ block content
       p 
         a.btn-link(href='/books/#{book.id}/edit') Edit
         form(action='/books/#{book.id}/delete' method='post')
-          input.btn.btn-link(type='submit' value='Delete')
+          input.btn.btn-link(type='submit' value='Delete' href='/books/#{book.id}/delete')

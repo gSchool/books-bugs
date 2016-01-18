@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-
-function books() {
+var knex = require('../db/knex')
+function Books() {
   return knex('books');
 }
 

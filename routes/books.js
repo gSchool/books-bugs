@@ -36,7 +36,7 @@ router.get('/:id/edit', function(req, res, next) {
 
 router.post('/:id', function (req, res, next) {
   Books().where('id', req.params.id).update(req.body).then(function (results) {
-    res.redirect('/books');
+    res.redirect('/');
   })
 });
 

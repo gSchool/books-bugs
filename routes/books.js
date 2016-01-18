@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-function books() {
+function Books() {
   return knex('books');
 }
 

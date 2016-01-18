@@ -1,12 +1,12 @@
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('books', function (t) {
-    t.increments();
-    t.string('author');
-    t.string('title');
-    t.string('description');
-    t.integer('rating');
-    t.timestamps();
+  return knex.schema.createTable('books', function (table) {
+    table.increments();
+    table.string('author');
+    table.string('title');
+    table.string('description');
+    table.integer('rating');
+    table.timestamps();
   })
 };
 

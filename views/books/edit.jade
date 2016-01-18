@@ -7,10 +7,10 @@ block content
     form(action='/books/#{book.id}', method='post')
       div.form-group
         label(for="author") Author
-        input.form-control(type="text" id="author" value= book.author placeholder="Author")
+        input.form-control(type="text" id="author" value=book.author placeholder="Author" name='author')
       div.form-group
         label(for="title") Title
-        input.form-control(type="text" id="title" value= book.title placeholder="Title")
+        input.form-control(type="text" id="title" value=book.title placeholder="Title" name='title')
       div.form-group
           label Rate this book
           p
@@ -27,8 +27,8 @@ block content
         four 4 (Awesome)
       div.form-group
         label(for="description") Description
-        textarea.form-control(rows="5" id='description') #{book.description}
-      button.btn.btn-primary(type="submit") Update
+        textarea.form-control(rows="5" id='description' name='description') #{book.description}
+      input.btn.btn-primary(type="submit" value='Update') 
 
                 
   

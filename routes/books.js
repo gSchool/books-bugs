@@ -35,8 +35,12 @@ router.get('/books/:book_id/show', function(req, res, next) {
   })
 });
 
-router.get('/books/edit', function(req, res, next) {
-  res.render('books/edit', {book: book});
+router.get('/books/:book_id/edit', function(req, res, next) {
+  Books().where('id', req.params.book_id).first().then(function(book){
+    res.render('books/edit', {book: book});
+  })
 });
+
+
 
 module.exports = router;

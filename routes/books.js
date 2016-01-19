@@ -1,13 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-function books() {
+function Books() {
   return knex('books');
 }
 
 router.get('/', function(req, res, next) {
   Books().select().then(function (books) {
     res.render('books/index', {books: books});
+    console.log(books)
   })
 });
 

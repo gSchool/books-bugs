@@ -29,8 +29,10 @@ router.post('/books', function(req, res){
   })
 });
 
-router.get('/books/show', function(req, res, next) {
-  res.render('books/show', {book: book});
+router.get('/books/:book_id/show', function(req, res, next) {
+  Books().where('id', req.params.book_id).first().then(function(book){
+    res.render('books/show', {book: book});
+  })
 });
 
 router.get('/books/edit', function(req, res, next) {

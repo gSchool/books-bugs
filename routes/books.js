@@ -41,6 +41,18 @@ router.get('/books/:book_id/edit', function(req, res, next) {
   })
 });
 
+router.post('/books/:book_id', function(req,res){
+  Books().where('id', req.params.book_id).update(req.body).then(function(book){
+    res.redirect('/books')
+  })
+})
+
+router.post('/books/:book_id/delete', function(req, res){
+  Books().where('id', req.params.book_id).del().then(function(book){
+    res.redirect('/books')
+  })
+})
+
 
 
 module.exports = router;

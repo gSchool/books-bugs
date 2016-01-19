@@ -16,6 +16,19 @@ router.get('/books/new', function(req, res, next) {
   res.render('books/new');
 });
 
+router.post('/books', function(req, res){
+  var book = {
+    author: req.body.author,
+    title: req.body.tittlywinks,
+    rating: req.body.rating,
+    description: req.body.description,
+  }
+
+  Books().insert(book).then(function(result){
+    res.redirect('/books');
+  })
+});
+
 router.get('/books/show', function(req, res, next) {
   res.render('books/show', {book: book});
 });

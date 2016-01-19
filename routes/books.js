@@ -16,12 +16,43 @@ router.get('/books/new', function(req, res, next) {
   res.render('books/new');
 });
 
-router.get('/books/show', function(req, res, next) {
-  res.render('books/show', {book: book});
+router.post('/books', function(req, res){
+  var book = {
+    author: req.body.author,
+    title: req.body.tittlywinks,
+    rating: req.body.rating,
+    description: req.body.description,
+  }
+
+  Books().insert(book).then(function(result){
+    res.redirect('/books');
+  })
 });
 
-router.get('/books/edit', function(req, res, next) {
-  res.render('books/edit', {book: book});
+router.get('/books/:book_id/show', function(req, res, next) {
+  Books().where('id', req.params.book_id).first().then(function(book){
+    res.render('books/show', {book: book});
+  })
 });
+
+router.get('/books/:book_id/edit', function(req, res, next) {
+  Books().where('id', req.params.book_id).first().then(function(book){
+    res.render('books/edit', {book: book});
+  })
+});
+
+router.post('/books/:book_id', function(req,res){
+  Books().where('id', req.params.book_id).update(req.body).then(function(book){
+    res.redirect('/books')
+  })
+})
+
+router.post('/books/:book_id/delete', function(req, res){
+  Books().where('id', req.params.book_id).del().then(function(book){
+    res.redirect('/books')
+  })
+})
+
+
 
 module.exports = router;

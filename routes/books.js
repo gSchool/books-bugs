@@ -1,9 +1,7 @@
 var express = require('express');
+var knex = require('../db/knex')
 var router = express.Router();
 
-function books() {
-  return knex('books');
-}
 
 router.get('/', function(req, res, next) {
   Books().select().then(function (books) {
@@ -46,3 +44,9 @@ router.post('books/:id/delete', function (req, res, next) {
 })
 
 module.exports = router;
+
+
+
+function Books() {
+  return knex('books');
+}

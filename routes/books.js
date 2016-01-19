@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var knex = require('../db/knex');
+var knex = require('../db/knex.js');
 
 function Books() {
   return knex('books');
@@ -42,7 +42,7 @@ router.post('/books/:id', function (req, res, next) {
 
 router.post('/books/:id/delete', function (req, res, next) {
   Books().where('id', req.params.id).del().then(function (results) {
-    res.redirect('/books/index');
+    res.redirect('/books');
   })
 })
 

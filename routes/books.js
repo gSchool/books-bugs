@@ -29,7 +29,7 @@ router.get('/books/:id', function(req, res, next) {
 });
 
 router.get('/books/:id/edit', function(req, res, next) {
-  Books().where('id', req.params.id).then(function (book) {
+  Books().where('id', req.params.id).first().then(function (book) {
     res.render('books/edit', {book: book});
     console.log(book)
   });

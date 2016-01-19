@@ -37,7 +37,7 @@ router.post('/:id/edit', function (req, res, next) {
   })
 });
 
-router.post('books/:id/delete', function (req, res, next) {
+router.post('/:id/delete', function (req, res, next) {
   Books().where('id', req.params.id).del().then(function (results) {
     res.redirect('/books');
   })

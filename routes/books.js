@@ -23,7 +23,7 @@ router.get('/books/new', function(req, res, next) {
 });
 
 router.get('/books/show', function(req, res, next) {
-  Books().where('id', req.params.id).first().then(function (book) {
+  Books().where('id', req.params.id).first().then(function (results) {
     res.render('books/show', {book: book});
   });
 });
@@ -34,8 +34,15 @@ router.get('/books/:id/edit', function(req, res, next) {
   });
 });
 
+router.get('/books/:id', function(req, res, next){
+  Books().select().where('id', req.params.id).then(function (result){
+    console.log(result);
+    res.render('books/show', {books: result})
+  })
+})
+
 router.post('/books/:id', function (req, res, next) {
-  Books().where('id', req.params.id).update(req.body).then(function (results) {
+  Books().where('id', req.params.id).update(req.body).then(function (book) {
     res.redirect('/books');
   })
 });

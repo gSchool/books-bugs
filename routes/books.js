@@ -22,9 +22,9 @@ router.get('/books/new', function(req, res, next) {
   res.render('books/new');
 });
 
-router.get('/books/show', function(req, res, next) {
+router.get('/books/:id/show', function(req, res, next) {
   Books().where('id', req.params.id).first().then(function (book) {
-    res.render('books/show', {book: book});
+    res.render('books/show', {book: book, id: req.params.id});
   });
 });
 

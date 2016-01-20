@@ -24,7 +24,7 @@ router.get('/books/new', function(req, res, next) {
 
 router.get('/books/show', function(req, res, next) {
   Books().where('id', req.params.id).first().then(function (results) {
-    res.render('books/index', {book: book});
+    res.render('books/show', {book: book});
   });
 });
 
@@ -35,8 +35,9 @@ router.get('/books/:id/edit', function(req, res, next) {
 });
 
 router.get('/books/:id', function(req, res, next){
-  Books().where('id', req.params.id).then(function (book){
-    res.render('books/show', {book: book})
+  Books().select().where('id', req.params.id).then(function (result){
+    console.log(result);
+    res.render('books/show', {books: result})
   })
 })
 
